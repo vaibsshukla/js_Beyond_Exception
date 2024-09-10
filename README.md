@@ -42,6 +42,40 @@ See also [`[]` is truthy, but not `true`](#-is-truthy-but-not-true).
 - [**12.5.9** Logical NOT Operator (`!`)](https://www.ecma-international.org/ecma-262/#sec-logical-not-operator)
 - [**7.2.15** Abstract Equality Comparison](https://262.ecma-international.org/11.0/index.html#sec-abstract-equality-comparison)
 
+## Split a string by a space
+
+```js
+"".split(""); // -> []
+// but…
+"".split(" "); // -> [""]
+```
+
+Let me clarify further with more detail:
+
+#### Case 1: ''.split('') -> []
+In this case:
+
+You are splitting an empty string ("") by an empty string ("").
+The .split('') method in JavaScript usually splits a string into individual characters. However, since the string is empty, there are no characters to split, resulting in an empty array: [].
+Why?
+
+Think of it like this: if you had a non-empty string like "abc", splitting it by an empty string would give ["a", "b", "c"]. But for an empty string, there's nothing to split.
+#### Case 2: ''.split(' ') -> [""]
+In this case:
+
+You are splitting an empty string ("") by a space (" ").
+The .split(' ') method looks for spaces in the string to split around. Since the string is already empty, there are no spaces to split on. JavaScript, however, will still return an array with one element, which is the original empty string ([""]).
+Why?
+
+The .split(' ') operation does not find any spaces, but the original string itself (which is empty) is treated as a single element in the resulting array.
+
+To illustrate this more clearly: if you did "hello".split(' '), you would get ["hello"] because no spaces exist in the string "hello". Similarly, in the empty string, the empty string itself is treated as the only element, so you get [""].
+
+#### Summary:
+''.split('') returns [] because there are no characters to split.
+''.split(' ') returns [""] because it treats the empty string as a single element, as there are no spaces to split.
+
+
 ##  A stringified string
 
 ```js
