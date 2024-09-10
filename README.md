@@ -42,3 +42,36 @@ See also [`[]` is truthy, but not `true`](#-is-truthy-but-not-true).
 - [**12.5.9** Logical NOT Operator (`!`)](https://www.ecma-international.org/ecma-262/#sec-logical-not-operator)
 - [**7.2.15** Abstract Equality Comparison](https://262.ecma-international.org/11.0/index.html#sec-abstract-equality-comparison)
 
+
+##  Non-strict comparison of a number to true
+
+```js
+1 == true; // -> true
+// but…
+Boolean(1.1); // -> true
+1.1 == true; // -> false
+```
+### 💡 Explanation:
+In JavaScript, the Boolean() function converts a value to a boolean. Any non-zero number, including 1.1, is considered true. Therefore, the result is true.
+
+```js
+1 == true;
+1 == Number(true);
+1 == 1; // -> true
+// but…
+1.1 == true;
+1.1 == Number(true);
+1.1 == 1; // -> false
+```
+
+
+
+
+
+
+
+
+
+
+
+
